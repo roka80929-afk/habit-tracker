@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Трекер привычек</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>Мои привычки</h1>
+      <div class="level-badge" id="levelBadge">Уровень —</div>
+    </header>
+
+    <section class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <div class="stat-value" id="weekPct">—</div>
+        <div class="stat-label">Неделя</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="monthPct">—</div>
+        <div class="stat-label">Месяц</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="bestHabit">—</div>
+        <div class="stat-label">Лучшая привычка</div>
+      </div>
+    </section>
+
+    <section id="habitsContainer"></section>
+
+    <p id="emptyState" class="empty-state" style="display:none">
+      Пока нет привычек. Добавь их в чате с ботом командой <code>/new название</code>.
+    </p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
