@@ -1,1 +1,145 @@
+:root {
+  --bg: #14161a;
+  --surface: #1c1f26;
+  --surface-2: #23272f;
+  --text: #edeff2;
+  --text-muted: #8b909c;
+  --flame: #ff8a3d;
+  --flame-dim: #ff8a3d33;
+  --growth-0: #23272f;
+  --growth-1: #1e3a2f;
+  --growth-2: #2c6b4a;
+  --growth-3: #3fa869;
+  --growth-4: #58d97f;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.level-badge {
+  background: linear-gradient(135deg, var(--flame), #ffb347);
+  color: #1a1108;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--flame);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.habit-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.habit-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.habit-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.habit-streak {
+  font-size: 13px;
+  color: var(--flame);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.heatmap {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 11px;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.heatmap-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  background: var(--growth-0);
+}
+
+.heatmap-cell[data-level="1"] { background: var(--growth-1); }
+.heatmap-cell[data-level="2"] { background: var(--growth-2); }
+.heatmap-cell[data-level="3"] { background: var(--growth-3); }
+.heatmap-cell[data-level="4"] { background: var(--growth-4); }
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+.empty-state code {
+  background: var(--surface-2);
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: var(--flame);
+}
 
