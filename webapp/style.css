@@ -142,4 +142,9 @@ body {
   border-radius: 6px;
   color: var(--flame);
 }
+.habit-time {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
 
