@@ -23,8 +23,7 @@ function buildHeatmap(checkins, days = 365) {
   const start = new Date(today);
   start.setDate(start.getDate() - (days - 1));
 
-  // Выравниваем начало сетки на понедельник, чтобы столбцы = недели, строки = дни недели
-  const weekday = (start.getDay() + 6) % 7; // 0 = понедельник
+  const weekday = (start.getDay() + 6) % 7;
   for (let i = 0; i < weekday; i++) {
     const empty = document.createElement("div");
     empty.className = "heatmap-cell";
@@ -62,7 +61,7 @@ function renderHabits(habits) {
     const head = document.createElement("div");
     head.className = "habit-card-head";
     head.innerHTML = `
-      <span class="habit-name">${escapeHtml(habit.name)}</span>
+      <span class="habit-name">${escapeHtml(habit.name)}<br><span class="habit-time">⏰ ${escapeHtml(habit.reminder_time || "")}</span></span>
       <span class="habit-streak">🔥 ${habit.streak} (рекорд ${habit.best_streak})</span>
     `;
     card.appendChild(head);
@@ -102,4 +101,3 @@ async function loadDashboard() {
 }
 
 loadDashboard();
-
