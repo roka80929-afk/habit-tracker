@@ -93,6 +93,14 @@ async def archive_habit(habit_id: int) -> None:
         await db.commit()
 
 
+async def set_reminder_time(habit_id: int, reminder_time: str) -> None:
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute(
+            "UPDATE habits SET reminder_time = ? WHERE id = ?", (reminder_time, habit_id)
+        )
+        await db.commit()
+
+
 async def checkin(habit_id: int, done: bool, date: str | None = None) -> dict:
     """
     Отмечает привычку выполненной/невыполненной на указанную дату (по умолчанию сегодня).
@@ -171,7 +179,8 @@ async def get_heatmap_data(user_id: int, days: int = 365) -> dict:
     async with aiosqlite.connect(DB_PATH) as db:
         db.row_factory = aiosqlite.Row
         cur = await db.execute(
-            "SELECT id, name, streak, best_streak FROM habits WHERE user_id = ? AND archived = 0",
+            "SELECT id, name, reminder_time, streak, best_streak FROM habits "
+            "WHERE user_id = ? AND archived = 0",
             (user_id,),
         )
         habits = [dict(r) for r in await cur.fetchall()]
@@ -214,4 +223,3 @@ async def get_heatmap_data(user_id: int, days: int = 365) -> dict:
         "month_pct": month_pct,
         "best_habit": best_habit["name"] if best_habit else None,
     }
-
