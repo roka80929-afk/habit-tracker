@@ -1,3 +1,13 @@
+"""
+Хендлеры бота: главное меню, добавление/удаление привычек, выбор времени
+напоминания (пресеты или свой 12-часовой формат с AM/PM), отметки выполнения, мини-апп.
+"""
+
+import os
+import re
+
+from aiogram import Router, F
+from aiogram.filters import Command, CommandObject, StateFilter
 state.update_data(habit_name=name)
         await state.set_state(AddHabit.waiting_time)
         await message.answer(
